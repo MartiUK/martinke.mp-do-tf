@@ -4,7 +4,7 @@ resource digitalocean_domain martinkemp {
 
 module do-fm-dns-records {
   source = "martiuk/fastmail/digitalocean"
-  version = "1.0.2"
+  version = "1.0.3"
 
   domain = digitalocean_domain.martinkemp.name
   enable_subdomain_addresses = true
