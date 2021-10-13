@@ -12,6 +12,9 @@ resource digitalocean_kubernetes_cluster main {
   version = data.digitalocean_kubernetes_versions.k.latest_version
   vpc_uuid = digitalocean_vpc.main.id
 
+  auto_upgrade = true
+  surge_upgrade = true
+
   node_pool {
     name       = "autoscale-worker-pool"
     size       = "s-2vcpu-2gb-amd"
