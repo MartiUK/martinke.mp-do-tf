@@ -1,6 +1,6 @@
 terraform {
   backend "remote" {
-    hostname = "app.terraform.io"
+    hostname     = "app.terraform.io"
     organization = "martinkemp"
 
     workspaces {
@@ -10,10 +10,10 @@ terraform {
 
   required_providers {
     digitalocean = {
-      source = "digitalocean/digitalocean"
+      source  = "digitalocean/digitalocean"
       version = "~> 2.0"
     }
   }
 }
 
-provider digitalocean {}
+provider "digitalocean" {}

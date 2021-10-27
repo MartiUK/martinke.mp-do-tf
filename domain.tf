@@ -1,12 +1,12 @@
-resource digitalocean_domain martinkemp {
+resource "digitalocean_domain" "martinkemp" {
   name = "martinke.mp"
 }
 
-module do-fm-dns-records {
-  source = "martiuk/fastmail/digitalocean"
+module "do-fm-dns-records" {
+  source  = "martiuk/fastmail/digitalocean"
   version = "1.0.3"
 
-  domain = digitalocean_domain.martinkemp.name
+  domain                     = digitalocean_domain.martinkemp.name
   enable_subdomain_addresses = true
 }
 
