@@ -1,18 +1,19 @@
-resource "digitalocean_domain" "martinkemp" {
-  name = "martinke.mp"
+resource "cloudflare_zone" "martinkemp" {
+  zone = "martinke.mp"
+  plan = "free"
 }
 
 module "do-fm-dns-records" {
-  source  = "martiuk/fastmail/digitalocean"
-  version = "1.0.3"
-
-  domain                     = digitalocean_domain.martinkemp.name
+  source                     = "martiuk/fastmail/cloudflare"
+  version                    = "1.0.0"
+  domain                     = cloudflare_zone.martinkemp.zone
+  zone_id                    = cloudflare_zone.martinkemp.id
   enable_subdomain_addresses = true
 }
 
-resource "digitalocean_record" "keybase" {
-  domain = digitalocean_domain.martinkemp.name
-  name   = "@"
-  type   = "TXT"
-  value  = "keybase-site-verification=98nLJnzb55C_7USM3IQUDfeKBD1YMMrh5rxVnaZRGjw"
+resource "cloudflare_record" "keybase" {
+  zone_id = cloudflare_zone.martinkemp.zone
+  name    = "@"
+  type    = "TXT"
+  value   = "keybase-site-verification=98nLJnzb55C_7USM3IQUDfeKBD1YMMrh5rxVnaZRGjw"
 }
