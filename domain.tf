@@ -12,7 +12,7 @@ module "do-fm-dns-records" {
 }
 
 resource "cloudflare_record" "keybase" {
-  zone_id = cloudflare_zone.martinkemp.zone
+  zone_id = cloudflare_zone.martinkemp.id
   name    = "@"
   type    = "TXT"
   value   = "keybase-site-verification=98nLJnzb55C_7USM3IQUDfeKBD1YMMrh5rxVnaZRGjw"
