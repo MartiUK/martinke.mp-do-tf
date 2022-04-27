@@ -5,7 +5,7 @@ resource "cloudflare_zone" "martinkemp" {
 
 module "do-fm-dns-records" {
   source                     = "martiuk/fastmail/cloudflare"
-  version                    = "1.0.1"
+  version                    = "1.0.2"
   domain                     = cloudflare_zone.martinkemp.zone
   zone_id                    = cloudflare_zone.martinkemp.id
   enable_subdomain_addresses = true
